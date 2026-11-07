@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model publication {
+  id          String   @id
+  issuer      String?
+  isin        String?
+  cac40       Boolean  @default(false)
+  type        String?
+  subtype     String?
+  status      String?
+  relatedTo   String?  @map("related_to")
+  title       String?
+  publishedAt DateTime @map("published_at")
+  url         String?
+  logourl     String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([publishedAt(sort: Desc)])
+  @@index([subtype])
+  @@index([issuer])
+  @@map("publication")
+}
+
+model llmVerification {
+  id            Int      @id @default(autoincrement())
+  isin          String
+  publishedAt   DateTime @map("published_at")
+  documentUrl   String   @map("document_url")
+  model         String
+  status        String
+  briefJson     Json?    @map("brief_json")
+  error         String?
+  generatedAt   DateTime @default(now()) @map("generated_at")
+
+  @@unique([isin, publishedAt, documentUrl, model], name: "cle_unique")
+  @@map("llm")
+}
