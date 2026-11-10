@@ -2,7 +2,6 @@
 
 **🔗 Liens du projet :**
 - **URL de l'application déployée :** [https://pongbattle.win/](https://pongbattle.win/)
-- **Lien du repo GitHub :** [https://github.com/Miillliiinn/Bergdot](https://github.com/Miillliiinn/Bergdot)
 
 ---
 
