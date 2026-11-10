@@ -52,7 +52,6 @@ export default function Home() {
     }
   }, [search])
 
-  // Écoute le bouton "Précédent" du navigateur
   useEffect(() => {
     const handlePopState = () => {
       setSelectedBrief(null);
@@ -61,13 +60,11 @@ export default function Home() {
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
-  // AJOUT 1 : Fonction pour ouvrir la brève et ajouter l'URL
   const openBrief = (brief) => {
     setSelectedBrief(brief)
     window.history.pushState({ briefId: brief.id }, '', `#brief-${brief.id}`)
   }
 
-  // AJOUT 2 : Fonction pour le bouton retour
   const closeBrief = () => {
     window.history.back()
   }
