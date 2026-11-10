@@ -55,7 +55,7 @@ export default function BriefDetail({ brief, onBack }: BriefDetailProps) {
                 {brief.briefJson.chiffres_cles.map((c: any, i: number) => (
                   <tr key={i}>
                     <td>{c.label || 'Donnée'}</td>
-                    <td>{c.valeur || c}</td>
+                    <td>{typeof c === 'object' ? (c.valeur || 'N/A') : (c || 'N/A')}</td>
                   </tr>
                 ))}
               </tbody>
